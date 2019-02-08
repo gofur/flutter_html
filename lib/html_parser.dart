@@ -1356,9 +1356,10 @@ class HtmlOldParser extends StatelessWidget {
                 mark,
                 Container(
                   width: width / 1.2,
-                Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: _parseNodeList(node.nodes))
+                  child: Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: _parseNodeList(node.nodes))
+                )
               ],
             ),
           );
