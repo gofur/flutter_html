@@ -1,3 +1,24 @@
+## [0.9.4] - February 5, 2019:
+
+* Fixes `table` error in `RichText` parser. ([#58](https://github.com/Sub6Resources/flutter_html/issues/58))
+
+## [0.9.3] - January 31, 2019:
+
+* Adds support for base64 encoded images
+
+## [0.9.2] - January 31, 2019:
+
+* Adds partial support for deprecated `font` tag.
+
+## [0.9.1] - January 31, 2019:
+
+* Adds full support for `sub` and `sup`. ([#46](https://github.com/Sub6Resources/flutter_html/pull/46))
+* Fixes weak warning caught by Pub analysis ([#54](https://github.com/Sub6Resources/flutter_html/issues/54))
+
+## [0.9.0] - January 31, 2019:
+
+* Adds an alternate `RichText` parser and `useRichText` parameter. ([#37](https://github.com/Sub6Resources/flutter_html/pull/37))
+
 ## [0.8.2] - November 1, 2018:
 
 * Removes debug prints.

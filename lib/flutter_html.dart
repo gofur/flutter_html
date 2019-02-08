@@ -9,10 +9,12 @@ class Html extends StatelessWidget {
     @required this.data,
     this.padding,
     this.backgroundColor,
-    this.defaultTextStyle = const TextStyle(color: Colors.black),
+    this.defaultTextStyle,
     this.onLinkTap,
     this.renderNewlines = false,
     this.customRender,
+    this.blockSpacing = 14.0,
+    this.useRichText = false,
   }) : super(key: key);
 
   final String data;
@@ -21,6 +23,8 @@ class Html extends StatelessWidget {
   final TextStyle defaultTextStyle;
   final OnLinkTap onLinkTap;
   final bool renderNewlines;
+  final double blockSpacing;
+  final bool useRichText;
 
   /// Either return a custom widget for specific node types or return null to
   /// fallback to the default rendering.
@@ -35,16 +39,22 @@ class Html extends StatelessWidget {
       color: backgroundColor,
       width: width,
       child: DefaultTextStyle.merge(
-        style: defaultTextStyle,
-        child: Wrap(
-          alignment: WrapAlignment.start,
-          children: HtmlParser(
-            width: width,
-            onLinkTap: onLinkTap,
-            renderNewlines: renderNewlines,
-            customRender: customRender,
-          ).parse(data),
-        ),
+        style: defaultTextStyle ?? DefaultTextStyle.of(context).style,
+        child: (useRichText)
+            ? HtmlRichTextParser(
+                width: width,
+                onLinkTap: onLinkTap,
+                renderNewlines: renderNewlines,
+                html: data,
+              )
+            : HtmlOldParser(
+                width: width,
+                onLinkTap: onLinkTap,
+                renderNewlines: renderNewlines,
+                customRender: customRender,
+                html: data,
+                blockSpacing: blockSpacing,
+              ),
       ),
     );
   }
