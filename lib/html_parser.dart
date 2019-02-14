@@ -218,6 +218,7 @@ class HtmlRichTextParser extends StatelessWidget {
     "p",
     "pre",
     "section",
+    "span"
   ];
 
   static get _supportedElements => List()
